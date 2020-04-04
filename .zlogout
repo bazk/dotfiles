@@ -1,0 +1,4 @@
+if [[ -s "${HOME}/.zprezto/runcoms/zlogout" ]]; then
+  source "${HOME}/.zprezto/runcoms/zlogout"
+fi
+
