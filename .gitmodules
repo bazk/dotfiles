@@ -1,3 +1,3 @@
-[submodule "/home/bazk/.zprezto"]
-	path = /home/bazk/.zprezto
+[submodule ".zprezto"]
+	path = .zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
