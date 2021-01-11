@@ -1,0 +1,7 @@
+#!/bin/bash
+
+bg_dir="$(realpath -s $1)"
+
+random_bg=$(ls "${bg_dir}" | sort --sort=random | head -n1)
+
+swaybg -i "${bg_dir}/${random_bg}" -m fill
