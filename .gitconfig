@@ -1,3 +1,5 @@
 [user]
 	email = root@bazk.dev
 	name = Eduardo L. Buratti
+[pull]
+	ff = only
