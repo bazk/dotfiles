@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Commands
-set $lock dm-tool lock
+set $lock sleep .1 && dm-tool switch-to-greeter
 set $term termite
 set $status i3status-rs
 set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused) | index(true)') -show drun -run-command 'swaymsg exec -- {cmd}'
