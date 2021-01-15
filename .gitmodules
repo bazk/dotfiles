@@ -6,4 +6,4 @@
 	url = https://github.com/asdf-vm/asdf.git
 [submodule ".autoenv"]
 	path = .autoenv
-	url = ./.autoenv
+	url = https://github.com/inishchith/autoenv.git
