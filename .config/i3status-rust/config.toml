@@ -30,7 +30,7 @@ alert = 5.0
 
 [[block]]
 block = "net"
-format = "{ssid} {signal_strength}"
+format = "{ssid} {signal_strength}{speed_up}{speed_down}"
 interval = 5
 use_bits = false
 
