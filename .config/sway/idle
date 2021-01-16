@@ -1,0 +1,52 @@
+#!/bin/bash
+
+timer_pid=""
+
+function cleanup() {
+  kill $timer_pid
+  exit 0
+}
+
+trap cleanup EXIT TERM INT
+
+function is_audio_playing() {
+  (pactl list sinks | grep RUNNING >/dev/null) && return 0 || return 1
+}
+
+function is_timer_running() {
+  [ -n "$timer_pid" ] && kill -0 $timer_pid >/dev/null 2>&1
+}
+
+function start_timer() {
+  if is_timer_running; then
+    return 0
+  fi
+
+  swayidle \
+    timeout 300 'exec dm-tool lock' \
+    before-sleep 'exec dm-tool lock' \
+    after-resume 'swaymsg "output * dpms on"' \
+    -w &
+
+  timer_pid=$!
+}
+
+function stop_timer() {
+  if ! is_timer_running; then
+    return 0
+  fi
+
+  kill $timer_pid >/dev/null 2>&1
+
+  timer_pid=""
+}
+
+while true; do
+  if is_audio_playing; then
+    stop_timer
+  else
+    start_timer
+  fi
+
+  sleep 5
+done
